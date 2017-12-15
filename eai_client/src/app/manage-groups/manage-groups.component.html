@@ -1,0 +1,59 @@
+<div class="container">
+  <h3>#ManageGroups</h3>
+  <hr />
+  <div class="row">
+    <div class="col-md-6">
+      <form [formGroup]="formAddGroup" class="section-container" >
+        <div class="form-group border-section" >
+          <h5>Add Group</h5>
+          <hr>
+          <input formControlName="groupName" class="form-control" placeholder="Group Name">
+          <br>
+          <label for="sel1">Super Group :</label>
+          <select formControlName="selectGroup" class="form-control" id="sel1" name="sel1">
+              <option [ngValue]="groupe" *ngFor="let groupe of dataGroups">{{ groupe.name }}</option>
+          </select>
+          <br>
+          <button type="submit" class="btn btn-primary" (click)="AddGroup()"><i class="fa fa-plus" aria-hidden="true"></i> Add</button>
+        </div>
+      </form>
+    </div>
+    <div class="col-md-6">
+      <form [formGroup]="formUpdateGroupName" class="section-container" >
+        <div class="form-group border-section" >
+          <h5>Change Group Name</h5>
+          <hr>
+          <input formControlName="newName" class="form-control" placeholder="New Name">
+          <br>
+          <label for="sel1">Group :</label>
+          <select formControlName="selectGroup"  class="form-control" id="sel1" name="sel1">
+              <option [ngValue]="groupe" *ngFor="let groupe of dataGroups">{{ groupe.name }}</option>
+          </select>
+          <br>
+          <button type="submit" class="btn btn-primary" (click)="UpdateGroup()"><i class="fa fa-wrench" aria-hidden="true"></i> Update</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <form [formGroup]="formRemoveGroup" class="section-container">
+        <div class="form-group border-section" >
+          <h5>Delete Group</h5>
+          <hr>
+          <label for="sel1">Group :</label>
+          <select formControlName="selectGroup" class="form-control" id="sel1" name="sel1">
+              <option [ngValue]="groupe" *ngFor="let groupe of dataGroups" [ngValue]="groupe" >{{ groupe.name }}</option>
+          </select>
+          <br>
+          <button type="submit" class="btn btn-primary" (click)="RemoveGroup()"><i class="fa fa-trash" aria-hidden="true"></i> Delete</button>
+        </div>
+      </form>
+    </div>
+    <div class="col-md-6">
+        <h5>Groups Schema</h5>
+        <hr>
+        <tree-root [nodes]="dataFluidSchema"></tree-root>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,3 @@
+<app-create-equip-step1 (toggleEvent)="toggleStepConf($event)" *ngIf="StepConftoggle"></app-create-equip-step1>
+
+<app-create-equip-step2 [dataEquiment]="outputDataEquip"  class="container" *ngIf="!StepConftoggle"></app-create-equip-step2>

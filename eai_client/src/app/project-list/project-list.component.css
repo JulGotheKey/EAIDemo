@@ -1,0 +1,82 @@
+.borderAlign {
+	position: relative;
+    display: block;
+	padding: 7px 0px 0px 0px;
+	margin-bottom: 0px;
+    background-color: #fff;
+	border-bottom: 1px solid #ddd;
+	border-radius: 6px;
+}
+
+.list-group-item-fork {
+	position: relative;
+    display: block;
+    padding: 10px 15px;
+    margin-bottom: -1px;
+
+}
+
+.list-item-project {
+	border-bottom: 1px solid #ddd;
+	padding-top: 14px;
+	padding-bottom: 14px;
+}
+
+tr.spaceUnder {
+	padding-bottom: 8em;
+  }
+
+  table {
+	border-spacing: 50px !important;
+  }
+
+td {
+    /* let the divs do the spacing */
+    padding: 108;
+}
+
+td div {
+	
+    border-style: solid;
+    border-color: black;
+    border-width: 1px 0;
+    /* now, here you can add the margin */
+	margin-bottom: 30px;
+	margin-top: 30px;
+    /* just some nice padding, you don't really need this */
+	padding: 10px;
+
+	
+}
+
+table {
+	width: 80%;
+  }
+
+td.circle:before {
+	content: attr(data-char);
+	display: block;
+	background: #449d44;
+	width: 50px;
+	height: 50px;
+	line-height:50px;
+	text-align:center;
+	vertical-align: middle;
+	border-radius: 50%;
+	margin:0 auto;
+	color: white;
+}
+
+  /* .circle {
+	width: 50px;
+	height: 50px;
+	-webkit-border-radius: 25px;
+	-moz-border-radius: 25px;
+	border-radius: 25px;
+	background: #449d44;
+	color: white;
+	text-align: center; 
+	display: table-cell;
+	border-top: none;
+	vertical-align: middle;
+} */

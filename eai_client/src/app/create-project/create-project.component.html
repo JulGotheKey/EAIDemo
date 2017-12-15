@@ -1,0 +1,16 @@
+<div class="container">
+    <h3>Create Project</h3>
+    <br>
+    <form [formGroup]="formCreateProject">
+        <div class="form-group">
+            <label for="formGroupExampleInput">Project Name :</label>
+            <input type="text" class="form-control" placeholder="name of your project" formControlName="projectName">
+        </div>
+        <div class="form-group">
+            <label for="exampleTextarea">Description :</label>
+            <textarea class="form-control" id="projectDescription" rows="4" placeholder="Description of your project" formControlName="projectDescription"></textarea>
+        </div>
+        <button type="button" class="btn btn-primary" (click)="createProject()"><i class="fa fa-plus" aria-hidden="true"></i>
+             Create</button>
+    </form>
+</div>

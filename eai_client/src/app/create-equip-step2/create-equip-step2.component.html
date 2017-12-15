@@ -1,0 +1,33 @@
+<div class="container">
+    <h3>Config group</h3>
+
+    <form class="section-container">
+        <div class="row">
+          <div class="col-md-12">
+            <hr>
+          </div>
+        </div>
+          <div class="row semi-section">
+          <div class="col-md-5  full">
+              <div class="form-group">
+                <b><label for="sel1">Select list:</label></b>
+                <select class="form-control" id="sel1" [(ngModel)]="selectedGroup" name="sel1">
+                  <option [ngValue]="groupe"></option>
+                  <option *ngFor="let groupe of dataGroups" [ngValue]="groupe" >{{ groupe.name }}</option>
+                </select>
+              </div>
+              <button type="submit" class="btn btn-primary" (click)="createEquipment()"><i class="fa fa-plus" aria-hidden="true"></i>
+                 Create</button>
+          </div>
+          <div class="col-md-4 offset-md-1 full">
+            <div class="form-group">
+              <b><label for="inputRevLMoteur" class="form-control-label">Group Schema</label></b>
+              <br>
+              <tree-root [nodes]="dataFluidSchema"></tree-root>
+            </div>
+          </div>
+          <div class="col-md-1">
+          </div>
+        </div>
+      </form>
+</div>

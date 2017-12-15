@@ -1,0 +1,519 @@
+<div class="container">
+    <!-- New Section Container -->
+    <!-- <input class="form-control" id="inputdefault" type="text"> -->
+    <!-- permet de mettre des valeur en liste tout en laissant le champ modifiable-->
+    <!-- <input type="text" name="product" list="productName"/>
+    <datalist id="productName">
+        <option value="Pen">Pen</option>
+        <option value="Pencil">Pencil</option>
+        <option value="Paper">Paper</option>
+    </datalist> -->
+    <h4>#{{ equipmentName }}</h4>
+    <br>
+    <form [formGroup]="formMotoEquip" class="section-container">
+      <div class="row">
+        <div class="col-md-12">
+            <h3>Motorized equipment</h3>
+            <hr>
+        </div>
+      </div>
+        <div class="row semi-section">
+        <div class="col-md-1">
+        </div>
+        <div class="col-md-2 full">
+          <fieldset disabled>
+            <div class="form-group">
+              <label for="inputIDTNumber" class="form-control-label">IDT_Number</label>
+              <input type="text" formControlName="idtNumber" class="form-control disabledTextInput" id="inputIDTNumber">
+            </div>
+          </fieldset>
+        </div>
+        <div class="col-md-4 offset-md-1  full">
+          <div class="form-group">
+              <label for="textADescritpion" class="form-control-label">Description de l'équipement</label>
+              <textarea formControlName="descEquip" class="form-control" id="textADescritpion" rows="3"></textarea>
+            </div>
+        </div>
+        <div class="col-md-2 offset-md-1 full">
+            <div class="form-group">
+                <label for="inputRevLMoteur" class="form-control-label">Révision</label>
+                <br>
+                <h5>{{ equipmentData.Revision }}</h5>
+            </div>
+        </div>
+        <div class="col-md-1">
+        </div>
+      </div>
+      <div class="row semi-section">
+        <div class="col-md-1">
+        </div>
+        <div class="col-md-2 full">
+  
+        </div>
+        <div class="col-md-3 offset-md-1  full">
+          <label for="cBoxASM" class="form-control-label">Suivi ASM</label>
+          <br>
+          <div class="form-check form-check-inline">
+            <label class="form-check-label">
+              <input formControlName="SuiviAsm" class="form-check-input" type="radio" name="SuiviAsm" id="inlineRadioAjout" value="Ajout"> Ajout
+            </label>
+          </div>
+          <div class="form-check form-check-inline">
+              <label class="form-check-label">
+                <input formControlName="SuiviAsm" class="form-check-input" type="radio" name="SuiviAsm" id="inlineRadioSupprimer" value="Supprimer"> Supprimer
+              </label>
+          </div>
+          <div class="form-check form-check-inline">
+              <label class="form-check-label">
+                <input formControlName="SuiviAsm" class="form-check-input" type="radio" name="SuiviAsm" id="inlineRadioMAJ" value="MiseAJour"> MAJ
+              </label>
+          </div>
+        </div>
+        <div class="col-md-1">
+        </div>
+      </div>
+    </form>
+  
+    <!-- New Section Container -->
+    <form [formGroup]="formArea" class="section-container">
+        <div class="row">
+          <div class="col-md-12">
+              <h3>Area</h3>
+              <hr>
+          </div>
+        </div>
+        <div class="row semi-section">
+          <div class="col-md-1">
+          </div>
+          <div class="col-md-2 full">
+            <div class="form-group">
+                <label for="inputPIDReference" class="form-control-label">P&ID référence</label>
+                <input formControlName="pidRef" type="text" class="form-control" id="inputPIDReference">
+            </div>
+          </div>
+          <div class="col-md-2 offset-md-2  full">
+            <div class="form-group">
+                <label for="inputPIDReference" class="form-control-label">Numéro de zone</label>
+                <input formControlName="numZone" type="text" class="form-control" id="inputPIDReference">
+            </div>
+          </div>
+          <div class="col-md-2 offset-md-2 full">
+            <div class="form-group">
+              <label for="inputFile" class="form-control-label">File</label>
+              <input formControlName="file" type="text" class="form-control" id="inputFile">
+            </div>
+          </div>
+          <div class="col-md-1">
+          </div>
+        </div>
+    
+        <div class="row semi-section">
+          <div class="col-md-1">
+          </div>
+          <div class="col-md-2 full">
+            <div class="form-group">
+              <label for="inputZoneProcess" class="form-control-label">Zone Process</label>
+              <input formControlName="zonePro" type="text" class="form-control" id="inputZoneProcess">
+            </div>
+          </div>
+          <div class="col-md-2 offset-md-2  full">
+            <div class="form-group">
+              <label for="inputAtelier" class="form-control-label">Atelier</label>
+              <input formControlName="atelier" type="text" class="form-control" id="inputAtelier">
+            </div>
+          </div>
+          <div class="col-md-2 offset-md-2 full">
+            <div class="form-group">
+                <label for="InputSousAtelier" class="form-control-label">Sous Atelier</label>
+                <input formControlName="sousAtelier" type="text" class="form-control" id="InputSousAtelier">
+            </div>
+          </div>
+          <div class="col-md-1">
+          </div>
+        </div>
+      </form>
+  
+    <!-- New Section Container -->
+    <form [formGroup]="formOpeIn" class="section-container">
+        <div class="row">
+          <div class="col-md-12">
+              <h3>Operating Information</h3>
+              <hr>
+          </div>
+        </div>
+        <div class="row semi-section">
+          <div class="col-md-1">
+          </div>
+          <div class="col-md-3 full">
+            <div class="form-group">
+              <label for="RadioMoteurImer" class="form-control-label">Moteur Immergé</label><br>
+              <div class="form-check form-check-inline">
+                <label class="form-check-label">
+                  <input formControlName="moteurImm" class="form-check-input" type="radio" name="moteurImm" id="inlineRadioOui" value="true"> oui
+                </label>
+              </div>
+              <div class="form-check form-check-inline">
+                  <label class="form-check-label">
+                    <input formControlName="moteurImm" class="form-check-input" type="radio" name="moteurImm" id="inlineRadioNon" value="false"> non
+                  </label>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 offset-md-1  full">
+            <div class="form-group">
+              <label for="RadioATEX" class="form-control-label">ATEX</label>
+              <br>
+              <div class="form-check form-check-inline">
+                  <label class="form-check-label">
+                    <input formControlName="atex" class="form-check-input" type="radio" name="atex" id="inlineRadioAjout" value="true"> oui
+                  </label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <label class="form-check-label">
+                      <input formControlName="atex" class="form-check-input" type="radio" name="atex" id="inlineRadioSupprimer" value="0"> 0
+                    </label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <label class="form-check-label">
+                      <input formControlName="atex" class="form-check-input" type="radio" name="atex" id="inlineRadioMAJ" value="1"> 1
+                    </label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <label class="form-check-label">
+                      <input formControlName="atex" class="form-check-input" type="radio" name="atex" id="inlineRadioMAJ" value="2"> 2
+                    </label>
+                </div>
+            </div>
+          </div>
+          <div class="col-md-2 offset-md-1">
+            <label for="RadioPackage" class="form-control-label">Package</label>
+            <br>
+            <div class="form-check form-check-inline">
+            <label class="form-check-label">
+              <input formControlName="package" class="form-check-input" type="radio" name="package" id="inlineRadioAjout" value="true"> oui
+            </label>
+            </div>
+            <div class="form-check form-check-inline">
+              <label class="form-check-label">
+                <input formControlName="package" class="form-check-input" type="radio" name="package" id="inlineRadioSupprimer" value="false"> non
+              </label>
+            </div>
+          </div>
+        </div>
+    
+        <div class="row semi-section">
+            <div class="col-md-1">
+            </div>
+            <div class="col-md-3 full">
+                <label for="RadioBackupGenset" class="form-control-label">Backup Genset</label>
+                <br>
+                <div class="form-check form-check-inline">
+                  <label class="form-check-label">
+                    <input formControlName="backupGen" class="form-check-input" type="radio" name="backupGen" id="inlineRadioOui" value="true"> oui
+                  </label>
+                </div>
+                 <div class="form-check form-check-inline">
+                    <label class="form-check-label">
+                      <input formControlName="backupGen" class="form-check-input" type="radio" name="backupGen" id="inlineRadioNon" value="false"> non
+                    </label>
+                </div>
+            </div>
+            <div class="col-md-2 offset-md-1 full">
+                <label for="RadioVFD" class="form-control-label">VFD</label>
+                <br>
+                <div class="form-check form-check-inline">
+                  <label class="form-check-label">
+                    <input formControlName="vfd" class="form-check-input" type="radio" name="vfd" id="inlineRadioOui" value="true"> oui
+                  </label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <label class="form-check-label">
+                      <input formControlName="vfd" class="form-check-input" type="radio" name="vfd" id="inlineRadioNon" value="false"> non
+                    </label>
+                  </div>
+              </div>
+              <div class="col-md-2 offset-md-2 full">
+                  <label for="RadioBackupInverter" class="form-control-label">Backup Inverter</label>
+                  <br>
+                  <div class="form-check form-check-inline">
+                    <label class="form-check-label">
+                      <input formControlName="backupInverter" class="form-check-input" type="radio" name="backupInverter" id="inlineRadioOui" value="true"> oui
+                    </label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <label class="form-check-label">
+                        <input formControlName="backupInverter" class="form-check-input" type="radio" name="backupInverter" id="inlineRadioNon" value="false"> non
+                      </label>
+                    </div>
+                </div>
+        </div>
+  
+        <div class="row">
+          <div class="col-md-1"></div>
+          <div class="col-md-3  full">
+              <div class="form-group">
+                <label for="RadioBackupEtat" class="form-control-label">Etat</label>
+                <br>
+                <div class="form-check form-check-inline">
+                  <label class="form-check-label">
+                    <input formControlName="etat" class="form-check-input" type="radio" name="etat" id="inlineRadioService" value="En Service"> En service
+                  </label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <label class="form-check-label">
+                    <input formControlName="etat" class="form-check-input" type="radio" name="etat" id="inlineRadioSecours" value="En Secours"> En secours
+                  </label>
+                </div>
+              </div>
+            </div>
+          <div class="col-md-3 offset-md-1 full">
+            <div class="form-group">
+              <label for="InputPackageTypique" class="form-control-label">Package Typique</label>
+              <input formControlName="packageTyp" type="text" name="packageTyp" class="form-control" id="InputPackageTypique">
+            </div>
+          </div>
+        </div>
+      </form>
+    <!-- New Section Container -->
+    <form [formGroup]="formElecDis" class="section-container">
+        <div class="row">
+          <div class="col-md-12">
+              <h3>Electrical distribution</h3>
+              <hr>
+          </div>
+        </div>
+        <div class="row semi-section">
+            <div class="col-md-1">
+            </div>
+            <div class="col-md-3 full">
+              <fieldset disabled>
+                <div class="form-group">
+                  <label for="inputTransfo" class="form-control-label">Equipment Group</label>
+                  <input formControlName="equipmentGroup" type="text" class="form-control" id="inputTransfo">
+                </div>
+              </fieldset>
+            </div>
+        </div>
+        <div class="row semi-section">
+            <div class="col-md-1">
+            </div>
+            <div class="col-md-3 full">
+              <div class="form-group">
+                  <label for="inputMCCLBL" class="form-control-panel">Départ Type</label>
+                  <input formControlName="departType" type="number" class="form-control" id="inputMCCLBL">
+              </div>
+            </div>
+            <div class="col-md-3 offset-md-1  full">
+              <div class="form-group">
+                <label for="inputMCCLBL" class="form-control-panel">Alimentation Electrique</label>
+                <input formControlName="alimenElec" type="number" class="form-control" id="inputMCCLBL">
+              </div>
+            </div>
+            <div class="col-md-4">
+            </div>
+        </div>
+        <div class="row semi-section">
+            <div class="col-md-1">
+            </div>
+            <div class="col-md-3 full">
+              <div class="form-group">
+                  <label for="inputMCCLBL" class="form-control-panel">Instensité</label>
+                  <input formControlName="intensite" type="number" class="form-control" id="inputMCCLBL">
+              </div>
+            </div>
+            <div class="col-md-3 offset-md-1  full">
+              <div class="form-group">
+                <label for="inputMCCLBL" class="form-control-panel">Cos Phi</label>
+                <input formControlName="cosPhi" type="number" class="form-control" id="inputMCCLBL">
+              </div>
+            </div>
+            <div class="col-md-4">
+            </div>
+        </div>
+      </form>
+  
+    <!-- New Section Container -->
+    <form [formGroup]="formPowerFeat" class="section-container">
+        <div class="row">
+          <div class="col-md-12">
+              <h3>Power Feature</h3>
+              <hr>
+          </div>
+        </div>
+        <div class="row semi-section">
+            <div class="col-md-1">
+            </div>
+            <div class="col-md-3 full">
+              <div class="form-group">
+                  <label for="inputNominalInstalledPower" class="form-control-panel">Nominal Installed power</label>
+                  <input formControlName="nominalInstPow" type="number" class="form-control" id="inputNominalInstalledPower">
+              </div>
+            </div>
+            <div class="col-md-3 offset-md-1  full">
+              <div class="form-group">
+                <label for="inputMechanicalPowerDemand" class="form-control-panel">Mechanical power demand</label>
+                <input formControlName="mechPowDemand" type="number" class="form-control" id="inputMechanicalPowerDemand">
+              </div>
+            </div>
+            <div class="col-md-4">
+            </div>
+        </div>
+  
+        <div class="row semi-section">
+            <div class="col-md-1">
+            </div>
+            <div class="col-md-3 full">
+              <div class="form-group">
+                  <label for="inputMotorEfficiency" class="form-control-panel">Motor Efficiency</label>
+                  <input formControlName="motorEfficiency" type="number" class="form-control" id="inputMotorEfficiency">
+              </div>
+            </div>
+            <div class="col-md-3 offset-md-1  full">
+              <div class="form-group">
+                <label for="inputMotorEfficiencyClass" class="form-control-panel">Motor Efficiency Class</label>
+                <br>
+                <div class="form-check form-check-inline">
+                  <label class="form-check-label">
+                    <input formControlName="motorEfficiencyCl" class="form-check-input" type="radio" name="motorEfficiencyCl" id="inlineRadioE1" value="E1"> E1
+                  </label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <label class="form-check-label">
+                    <input formControlName="motorEfficiencyCl" class="form-check-input" type="radio" name="motorEfficiencyCl" id="inlineRadioE2" value="E2"> E2
+                  </label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <label class="form-check-label">
+                    <input formControlName="motorEfficiencyCl" class="form-check-input" type="radio" name="motorEfficiencyCl" id="inlineRadioE3" value="E3"> E3
+                  </label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <label class="form-check-label">
+                    <input formControlName="motorEfficiencyCl" class="form-check-input" type="radio" name="motorEfficiencyCl" id="inlineRadioE4" value="E4"> E4
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+            </div>
+        </div>
+        <div class="row semi-section">
+            <div class="col-md-1">
+            </div>
+            <div class="col-md-3 full">
+              <div class="form-group">
+                  <label for="inputIntalleAbsorbedPowerDP" class="form-control-panel">Installed Absorbed power DP</label>
+                  <input formControlName="installAbsorPowDp" type="number" class="form-control" id="inputIntalleAbsorbedPowerDP">
+              </div>
+            </div>
+            <div class="col-md-3 offset-md-1  full">
+              <div class="form-group">
+                <label for="inputDutyAbsorbedPorwer" class="form-control-panel">Duty Absorbed Power</label>
+                <input formControlName="dutyAbsPow" type="number" class="form-control" id="inputDutyAbsorbedPorwer">
+              </div>
+            </div>
+            <div class="col-md-4">
+            </div>
+        </div>
+      </form>
+      <!-- New Section Container -->
+    <form [formGroup]="formWiring" class="section-container">
+        <div class="row">
+          <div class="col-md-12">
+              <h3>Cable/ Wiring</h3>
+              <hr>
+          </div>
+        </div>
+  
+        <div class="row semi-section">
+            <div class="col-md-1">
+            </div>
+            <div class="col-md-2 full">
+              <div class="form-group">
+                  <label for="inputTypeCablePuissance" class="form-control-label">Type câble puissance</label>
+                  <input formControlName="typeCablePuissance" type="text" class="form-control" id="inputTypeCablePuissance">
+              </div>
+            </div>
+            <div class="col-md-2 offset-md-2  full">
+              <div class="form-group">
+                  <label for="inputSectionCable" class="form-control-label">Section de câble</label>
+                  <input formControlName="sectionCable" type="text" class="form-control" id="inputSectionCable">
+              </div>
+            </div>
+            <div class="col-md-2 offset-md-2 full">
+              <div class="form-group">
+                <label for="inputNombreCable" class="form-control-label">Nombre de câble</label>
+                <input formControlName="nbrCable" type="number" class="form-control" id="inputNombreCable">
+              </div>
+            </div>
+            <div class="col-md-1">
+            </div>
+          </div>
+  
+          <div class="row semi-section">
+              <div class="col-md-1">
+              </div>
+              <div class="col-md-2 full">
+                <div class="form-group">
+                  <label for="inputTypeProctection" class="form-control-label">Type de protection</label>
+                  <input formControlName="typeProtection" type="text" class="form-control" id="inputTypeProctection">
+                </div>
+              </div>
+              <div class="col-md-2 offset-md-2  full">
+                <div class="form-group">
+                    <label for="inputCableProtection" class="form-control-label">Type câble protection</label>
+                    <input formControlName="typeCableProtection" type="text" class="form-control" id="inputCableProtection">
+                </div>
+              </div>
+              <div class="col-md-2 offset-md-2 full">
+                <div class="form-group">
+                  <label for="inputTypeCableCommande" class="form-control-label">Type câble commande</label>
+                  <input formControlName="typeCableCommande" type="text" class="form-control" id="inputTypeCableCommande">
+                </div>
+              </div>
+              <div class="col-md-1">
+              </div>
+            </div>
+  
+        <div class="row semi-section">
+            <div class="col-md-2 offset-md-5 full">
+              <div class="form-group">
+                  <label for="inputLongueurCable" class="form-control-label">Longueur de câble</label>
+                  <input formControlName="longueurCable" type="number" class="form-control" id="inputLongueurCable">
+                </div>
+            </div>
+            <div class="col-md-5"></div>
+          </div>
+        </form>
+  
+  
+    <!-- New Section Container -->
+    <form [formGroup]="formThermDiss" class="section-container">
+        <div class="row">
+          <div class="col-md-12">
+              <h3>Thermal dissipation</h3>
+              <hr>
+          </div>
+        </div>
+  
+        <div class="row semi-section">
+            <div class="col-md-1">
+            </div>
+            <div class="col-md-3 full">
+              <div class="form-group">
+                  <label for="inputHeatDissipation" class="form-control-panel">Heat dissipation</label>
+                  <input formControlName="heatDissipation" type="number" class="form-control" id="inputHeatDissipation">
+              </div>
+            </div>
+            <div class="col-md-3 offset-md-1  full">
+              <div class="form-group">
+                <label for="inputHVACComments" class="form-control-panel">HVAC comments</label>
+                <input formControlName="hvac" type="number" class="form-control" id="inputHVACComments">
+              </div>
+            </div>
+            <div class="col-md-4">
+            </div>
+        </div>
+      </form>
+  </div>
+  <div class="letmargin"></div>

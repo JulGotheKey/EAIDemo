@@ -1,0 +1,39 @@
+    <!-- Container for sidebar(s) + page content position: fixed;width: 100%;   -->
+<ng-sidebar-container style="height: 100vh;">
+
+  <!-- A sidebar -->
+  <ng-sidebar [(opened)]="_opened" [(mode)]="_mode" style="font-size: 16px;">
+    <!-- Reunir tout le formulaire dans un Component -->
+    <!-- <img class="img-responsive" src="assets/img/header.png" alt="VWT Header" /> -->
+    <b><p style="border-bottom: 1px solid #222222; padding-bottom:5px;">EAI</p></b>
+    <ul>
+      <li><a [routerLink]="['/']">Home</a></li>
+      <li><a [routerLink]="['/project']">Projects</a></li>
+      <li><a [routerLink]="['/']">Parameter Sheet</a></li>
+      <div *ngIf="isDisplay">
+      <li>Bilan de Puissances</li>
+      <li>Bilan des départs moteurs</li>
+      <li>Bilan de câbles</li>
+      <li>Bilan de chemin de câbles</li>
+      <li>Bilan Thermique</li>
+      <li>Bilan Protection/commande</li>
+      </div>
+    </ul>
+    <!-- <b><p style="border-bottom: 1px solid #222222; padding-bottom:5px;">EAI</p></b>
+    <p style="font-weight: 1px">Liste Entrée</p>
+    <p>Feuille de paramètres</p>
+    <p>Feuille de saisie</p>
+    <p>Liste équipement</p>
+    <p>Bilan de Puissances</p>
+    <p>Bilan des départs moteurs</p>
+    <p>Bilan de câbles</p>
+    <p>Bilan de chemin de câbles</p>
+    <p>Bilan Thermique</p>
+    <p>Bilan Protection/commande</p> -->
+  </ng-sidebar>
+  <!-- Page content -->
+  <div ng-sidebar-content>
+    <ng-content></ng-content>
+  </div>
+
+</ng-sidebar-container>
