@@ -20,6 +20,7 @@ export class CreateEquipStep2Component implements OnInit {
   projectId: number;
   selectedGroup = {id: '', projectId: ''};
   dataFluidSchema: any;
+  cleanData = [];
   
   constructor(private fb: FormBuilder, private _groupsService: GroupsService, private _equipmentsService: EquipmentsService, private route: ActivatedRoute, private router: Router) {
     this.formConfigGroup = fb.group({
@@ -43,24 +44,59 @@ export class CreateEquipStep2Component implements OnInit {
 
   createEquipment() {
 
+    var areaForm = this.dataEquiment["Area"].controls;
+    var operatingForm = this.dataEquiment["OperatingInformation"].controls;
+    var electricalDisForm = this.dataEquiment["ElectricalDistribution"].controls;
+    var powerFeatForm = this.dataEquiment["PowerFeature"].controls;
+    var cableForm = this.dataEquiment["Cable"].controls;
+    var thermalDissForm = this.dataEquiment["ThermalDissipation"].controls;
+    var motorizedEquip = this.dataEquiment["MotorizedEquipment"].controls;
+
     var equipIdtNumber = this.dataEquiment["MotorizedEquipment"].controls.idtNumber.value;
+
     var equipGroupId;;
     if(this.selectedGroup === undefined){
       equipGroupId = null;
     }else {
       equipGroupId = parseInt(this.selectedGroup.id);
     }
+
+    this.cleanData["MotorizedEquipments"] = {IdtNumber: motorizedEquip.idtNumber.value, Description: motorizedEquip.descEquip.value,
+      SuiviAsm: motorizedEquip.SuiviAsm.value, Revision: motorizedEquip.revision.value}
+
+    this.cleanData["Areas"] = {PIDReference: areaForm.pidRef.value, NumeroZone: areaForm.numZone.value, 
+      File: areaForm.file.value, ZoneProcess: areaForm.zonePro.value, Atelier: areaForm.atelier.value, SousAtelier: areaForm.sousAtelier.value};
+
+    this.cleanData["OperatingInformations"] = {MoteurImerge: operatingForm.moteurImm.value , Atex : operatingForm.atex.value,
+      Package: operatingForm.package.value , BackupGenset : operatingForm.backupGen.value, Vfd: operatingForm.vfd.value,
+      BackupInverter: operatingForm.backupInverter.value , Etat: operatingForm.etat.value , 
+      PackageTypique :operatingForm.packageTyp.value};
+
+    this.cleanData["ElectricalDistributions"] = {Transfo: 1, TgbtLocation: 1, MccLocation: 1, 
+      DepartType: electricalDisForm.departType.value, AlimentationElectrique: electricalDisForm.alimenElec.value,
+      Intensite: electricalDisForm.intensite.value, CosPhi: electricalDisForm.cosPhi.value};
+
+    this.cleanData["PowerFeatures"] = {NominalInstalledPower: powerFeatForm.nominalInstPow.value, MechanicalPowerDemand: powerFeatForm.mechPowDemand.value,
+       MotorEfficiency: powerFeatForm.nominalInstPow.value, MotorEfficiencyClass: powerFeatForm.motorEfficiencyCl.value, 
+       InstalledAbsorbedPowerDp: powerFeatForm.installAbsorPowDp.value, DutyAbsorbedPower: powerFeatForm.dutyAbsPow.value};
     
+    this.cleanData["Cables"] = {TypeCablePuissance: cableForm.typeCablePuissance.value, SectionCable: cableForm.sectionCable.value, 
+      NombreCable: cableForm.nbrCable.value, TypeProtection: cableForm.typeProtection.value, TypeCableProtection: cableForm.typeCableProtection.value, 
+      TypeCableCommande: cableForm.typeCableCommande.value, LongueurCable: cableForm.longueurCable.value};
+
+      this.cleanData["ThermalDissipations"] = {HeatDissipation: thermalDissForm.heatDissipation.value, HVAC: thermalDissForm.hvac.value}
+
     var equipProjectId = this.projectId;
-    console.log(equipGroupId);
     
  
-    this._equipmentsService.insertEquipment(equipIdtNumber, equipGroupId, equipProjectId)
+    this._equipmentsService.insertEquipment(equipIdtNumber, equipGroupId, equipProjectId, this.cleanData)
     .subscribe(
       (data) => this.dataEquipment = data,
       (error) => console.log(error),
       ()=>{
         this.router.navigate(['/equipmentList/'+this.projectId]);
+        console.log(this.dataEquiment);
+        
       }
     );
   }

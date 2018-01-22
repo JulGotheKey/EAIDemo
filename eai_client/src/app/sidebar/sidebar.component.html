@@ -5,18 +5,16 @@
   <ng-sidebar [(opened)]="_opened" [(mode)]="_mode" style="font-size: 16px;">
     <!-- Reunir tout le formulaire dans un Component -->
     <!-- <img class="img-responsive" src="assets/img/header.png" alt="VWT Header" /> -->
-    <b><p style="border-bottom: 1px solid #222222; padding-bottom:5px;">EAI</p></b>
-    <ul>
+    <p style="border-bottom: 1px solid #222222; padding-bottom:5px; font-weight: 500; font-size: 1.1em;">EAI</p>
+    <ul style="margin:0; padding:0;">
       <li><a [routerLink]="['/']">Home</a></li>
       <li><a [routerLink]="['/project']">Projects</a></li>
-      <li><a [routerLink]="['/']">Parameter Sheet</a></li>
       <div *ngIf="isDisplay">
-      <li>Bilan de Puissances</li>
-      <li>Bilan des départs moteurs</li>
-      <li>Bilan de câbles</li>
-      <li>Bilan de chemin de câbles</li>
-      <li>Bilan Thermique</li>
-      <li>Bilan Protection/commande</li>
+      <li><a [routerLink]="['/wiringPower', projectId]">Bilan des câbles de puissance</a></li>
+      <li><a [routerLink]="['/wiringProtection', projectId]">Bilan des câbles de protection</a></li>
+      <li><a [routerLink]="['/thermalDissipation', projectId]">Bilan Thermique</a></li>
+      <li><a [routerLink]="['/commandProtection', projectId]">Bilan des commandes et protections</a></li>
+      <li><a [routerLink]="['/motorStarter', projectId]">Bilan des départs moteurs</a></li>
       </div>
     </ul>
     <!-- <b><p style="border-bottom: 1px solid #222222; padding-bottom:5px;">EAI</p></b>

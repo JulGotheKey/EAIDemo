@@ -35,8 +35,8 @@ export class ProjectListComponent implements OnInit {
   }
 
   goFun(){
-
-    this.messageService.sendMessage("letDisplay");
+    //To update
+    this.messageService.sendMessage(1);
   }
 
   getProjects (): void {
@@ -60,7 +60,7 @@ export class ProjectListComponent implements OnInit {
 
   public projectSelect(projectSelect: any) :void {
     console.log(projectSelect);
-    this.router.navigateByUrl('/equipmentList/'+ projectSelect.id);
+    this.router.navigateByUrl('/equipmentList/'+ projectSelect.id );
    }
 
 }

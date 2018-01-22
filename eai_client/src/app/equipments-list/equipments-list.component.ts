@@ -21,22 +21,24 @@ export class EquipmentsListComponent implements OnInit, OnDestroy {
   @Output() backToProjects = new EventEmitter();
   @Input() equipments;
   constructor(private _equipmentService: EquipmentsService, private route: ActivatedRoute, private router: Router, private _projectService: ProjectsService, private sharedService: SharedService) { 
-    
+    this.sub = this.route.params.subscribe(params => {
+      console.log(params['id']);
+      
+   });
   }
 
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
-      this.projectId = +params['id']; // (+) converts string 'id' to a number
-      // In a real app: dispatch action to load the details here.
+      this.projectId = +params['id'];
    });
    this.getEquipments();
    this.getProject(this.projectId);
-   this.sharedService.sendMessage('letDisplay');
+   this.sharedService.sendMessage(this.projectId);
    
   }
 
   ngOnDestroy(): void {
-    this.sharedService.sendMessage('letHide');
+    this.sharedService.sendMessage(0);
     
   }
 

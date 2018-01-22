@@ -47,42 +47,39 @@ export class CreateEquipStep1Component implements OnInit {
       backupGen: 'true',
       vfd: 'true',
       backupInverter: 'true',
-      etat: 'En service',
+      etat: 'En Service',
       packageTyp: 'Initial Package'
     });
 
     this.formElecDis = fb.group({
-      transfo: '',
-      tgbtLocation: '',
-      mccLocation: '',
-      departType: '',
-      alimenElec: '',
-      intensite: '',
-      cosPhi: ''
+      departType: 1,
+      alimenElec: 1,
+      intensite: 1,
+      cosPhi: 1
     });
 
     this.formPowerFeat = fb.group({
-      nominalInstPow: '',
-      mechPowDemand: '',
-      motorEfficiency: '',
-      motorEfficiencyCl: '',
-      installAbsorPowDp: '',
-      dutyAbsPow: ''
+      nominalInstPow: 1,
+      mechPowDemand: 1,
+      motorEfficiency: 1,
+      motorEfficiencyCl: 'E1',
+      installAbsorPowDp: 1,
+      dutyAbsPow: 1
     });
 
     this.formWiring = fb.group({
-      typeCablePuissance: '',
-      sectionCable: '',
-      nbrCable: '',
-      typeProtection: '',
-      typeCableProtection: '',
-      typeCableCommande: '',
-      longueurCable: ''
+      typeCablePuissance: 'Initial Type Cable Puissance',
+      sectionCable: 1,
+      nbrCable: 1,
+      typeProtection: 'Initial Type Protection',
+      typeCableProtection: 'Initial Type Cable Protection',
+      typeCableCommande: 'Initial Type Cable Commande',
+      longueurCable: 1
     });
 
     this.formThermDiss = fb.group({
-      hvac: '',
-      heatDissipation: ''
+      hvac: 1,
+      heatDissipation: 1
     });
    }
 
@@ -95,7 +92,10 @@ export class CreateEquipStep1Component implements OnInit {
     this.dataEquip['PowerFeature'] = this.formPowerFeat;
     this.dataEquip['Cable'] = this.formWiring;
     this.dataEquip['ThermalDissipation'] = this. formThermDiss;
-
+    console.log(this.dataEquip);
+    console.log(this.dataEquip);
+    console.log(this.dataEquip);
+    
     this.toggleEvent.emit(this.dataEquip);
    }
 }

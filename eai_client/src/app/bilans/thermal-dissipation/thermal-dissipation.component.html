@@ -1,0 +1,19 @@
+<div class="container">
+  <h2>Thermal Dissipation</h2>
+  <hr>
+  <div class="space"></div>
+  <table class="table">
+      <thead class="thead-default">
+        <tr>
+          <th>Switchboard</th>
+          <th>Heat Dissipation</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let equipment of cleanData">
+          <td>{{ equipment.SwitchBoard }}</td>
+          <td>{{ equipment.HeatDissipation }}</td>
+        </tr>
+      </tbody>
+    </table>
+</div>

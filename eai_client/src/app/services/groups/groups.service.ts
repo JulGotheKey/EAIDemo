@@ -20,6 +20,7 @@ export class GroupsService {
   constructor(private _http: Http) {
     this.data = new Observable((observer)=> this.dataObserver = observer);
     this.serverPath = 'http://localhost:54497/api/Groupes/';
+    //this.serverPath = 'http://frstm01aplu1:8086/api/Groupes/';
    }
 
   public getGroups(projectId: number) :Observable<any> {
@@ -44,13 +45,6 @@ export class GroupsService {
   }
 
   public getSchemaGroup(projectId: number): Promise<any>{
-    // return this._http.get(this.serverPath + 'SortSchemGroup/projectId=' + projectId).map((data)=> data.json()).toPromise()
-    // .then((res)=>{
-    //   res = res.replace(/SousGroupes/g , "children");
-    //   res = res.replace(/Name/g , "name");
-    //   res = res.replace(/Id/g , "id");
-    //   res = JSON.parse(res);
-    // });
 
     let promise = new Promise((resolve, reject)=>{
       let apiURL = this.serverPath + 'SortSchemGroup/projectId=' + projectId;

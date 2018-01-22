@@ -24,6 +24,8 @@ import { ManageGroupsComponent } from './manage-groups/manage-groups.component';
 
 import { TreeModule } from 'angular-tree-component';
 
+import { BilansModule } from "./bilans/bilans.module";
+
 
 @NgModule({
   declarations: [
@@ -49,7 +51,8 @@ import { TreeModule } from 'angular-tree-component';
     ModalModule.forRoot(),
     HttpModule,
     FormsModule,
-    TreeModule
+    TreeModule,
+    BilansModule
   ],
   providers: [],
   bootstrap: [AppComponent]

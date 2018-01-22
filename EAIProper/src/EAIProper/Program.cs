@@ -14,6 +14,7 @@ namespace EAIProper
         {
             var host = new WebHostBuilder()
                 .UseKestrel()
+                .UseWebRoot("wwwroot")
                 .UseContentRoot(Directory.GetCurrentDirectory())
                 .UseIISIntegration()
                 .UseStartup<Startup>()

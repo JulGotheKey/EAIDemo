@@ -18,6 +18,7 @@ export class FormsService {
   constructor(private _http: Http) {
     this.data = new Observable((observer) => this.dataObserver = observer);
     this.serverpath = 'http://localhost:54497/api/';
+    //this.serverpath = 'http://frstm01aplu1:8086/api/';
    }
   
   getAllProjects(): Observable<any> {

@@ -1,5 +1,5 @@
 <div class="container">
-    <h3>Config group</h3>
+    <h3>Group Configuration</h3>
 
     <form class="section-container">
         <div class="row">
@@ -10,7 +10,7 @@
           <div class="row semi-section">
           <div class="col-md-5  full">
               <div class="form-group">
-                <b><label for="sel1">Select list:</label></b>
+                <b><label for="sel1">Select list :</label></b>
                 <select class="form-control" id="sel1" [(ngModel)]="selectedGroup" name="sel1">
                   <option [ngValue]="groupe"></option>
                   <option *ngFor="let groupe of dataGroups" [ngValue]="groupe" >{{ groupe.name }}</option>

@@ -44,7 +44,8 @@ namespace EAIProper
             // Add framework services.
             services.AddMvc();
             services.AddMvcCore();
-            var connectionString = "User ID=postgres;Password=uiop789;Host=localhost;Port=5432;Database=eaidev;Pooling=true";
+            //var connectionString = "User ID=postgres;Password=uiop789;Host=localhost;Port=5432;Database=eaidev;Pooling=true";
+            var connectionString = "User ID=postgres;Password=postgres@2017;Host=10.152.10.65;Port=5432;Database=eaidev;Pooling=true";
             services.AddDbContext<EAIContext>(
                 opts => opts.UseNpgsql(connectionString)
             );
@@ -63,7 +64,15 @@ namespace EAIProper
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
 
-            app.UseMvc();
+            app.UseStaticFiles();
+            app.UseMvc(routes =>
+            {
+                routes.MapRoute(
+                    name: "default",
+                    template: "{controller=Home}/{action=Index}/{id?}");
+            });
+
+            app.UseDeveloperExceptionPage();
         }
     }
 }

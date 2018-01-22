@@ -1,6 +1,12 @@
 ul {
-    list-style-type: none;
-    text-decoration: none;
-  }
+  text-decoration: none;
+  list-style-type: none;
+}
+
+ul li{
+  padding: 5px;
+  font-size: 1.1em;
+  font-weight: 500;
+}
 
 a { color: #FFFFFF; text-decoration: none; }

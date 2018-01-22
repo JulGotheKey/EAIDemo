@@ -1,0 +1,23 @@
+<div class="container">
+  <h2>Motor Starter</h2>
+  <hr>
+  <div class="space"></div>
+  <table class="table">
+      <thead class="thead-default">
+        <tr>
+          <th>Switchboard</th>
+          <th>Motor starter type</th>
+          <th>Puissance</th>
+          <th>Number</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let equipment of cleanData">
+          <td>{{ equipment.SwitchBoard }}</td>
+          <td>{{ equipment.MotorStarterType }}</td>
+          <td>{{ equipment.Puissance }}</td>
+          <td>{{ equipment.Number }}</td>
+        </tr>
+      </tbody>
+    </table>
+</div>

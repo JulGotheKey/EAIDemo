@@ -1,0 +1,21 @@
+<div class="container">
+  <h2>Command and Protection</h2>
+  <hr>
+  <div class="space"></div>
+  <table class="table">
+      <thead class="thead-default">
+        <tr>
+          <th>Switchboard</th>
+          <th>Protection</th>
+          <th>Number</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let equipment of cleanData">
+          <td>{{ equipment.SwitchBoard }}</td>
+          <td>{{ equipment.Protection }}</td>
+          <td>{{ equipment.Number }}</td>
+        </tr>
+      </tbody>
+    </table>
+</div>

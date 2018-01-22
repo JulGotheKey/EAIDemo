@@ -1,0 +1,21 @@
+<div class="container">
+  <h2>Wiring Power Bilan</h2>
+  <hr>
+  <div class="space"></div>
+  <table class="table">
+      <thead class="thead-default">
+        <tr>
+          <th>Power Cable</th>
+          <th>Number</th>
+          <th>Quantity (m)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let equipment of cleanData">
+          <td>{{ equipment.PowerCable }}</td>
+          <td>{{ equipment.Number }}</td>
+          <td>{{ equipment.quantity }}</td>
+        </tr>
+      </tbody>
+    </table>
+</div>

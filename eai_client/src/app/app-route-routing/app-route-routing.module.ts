@@ -12,6 +12,12 @@ import { CreateProjectComponent } from '../create-project/create-project.compone
 import { CreateEquipmentComponent } from '../create-equipment/create-equipment.component';
 import { ManageGroupsComponent } from '../manage-groups/manage-groups.component';
 
+import { WiringPowerComponent } from '../bilans/wiring-power/wiring-power.component';
+import { WiringProtectionComponent } from '../bilans/wiring-protection/wiring-protection.component';
+import { ThermalDissipationComponent } from '../bilans/thermal-dissipation/thermal-dissipation.component';
+import { CommandProtectionComponent } from '../bilans/command-protection/command-protection.component';
+import { MotorStarterComponent } from '../bilans/motor-starter/motor-starter.component';
+
 const routes: Routes = [
   {path:'', component: MainComponent},
   {path:'project', component: ProjectComponent},
@@ -20,7 +26,14 @@ const routes: Routes = [
   {path: 'createEquipment/:idProject', component: CreateEquipmentComponent},
   {path:'equipmentList/:id', component: EquipmentsListComponent},
   {path:'createProject', component: CreateProjectComponent},
-  {path:'manageGroups/:idProject', component: ManageGroupsComponent}
+  {path:'manageGroups/:idProject', component: ManageGroupsComponent},
+
+  //Bilans module part
+  {path: 'wiringPower/:idProject', component: WiringPowerComponent},
+  {path: 'wiringProtection/:idProject', component: WiringProtectionComponent},
+  {path: 'thermalDissipation/:idProject', component: ThermalDissipationComponent},
+  {path: 'commandProtection/:idProject', component: CommandProtectionComponent},
+  {path: 'motorStarter/:idProject', component: MotorStarterComponent}
 ];
 
 @NgModule({
