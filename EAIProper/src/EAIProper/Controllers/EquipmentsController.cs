@@ -60,42 +60,53 @@ namespace EAIProper.Controllers
 
             //TODO CHANGE Equipment Id
 
-            JObject test = item;
-            string json = Json(test).ToString();
-            string hello = test.ToString();
-            var deseria = JsonConvert.DeserializeObject<EquipmentDesc>(hello);
+            JObject dataObject = item;
+            string dataObjectStr = dataObject.ToString();
+            var equipmentData = JsonConvert.DeserializeObject<EquipmentDesc>(dataObjectStr);
 
-            //Un equipment peut ne pas avoir de groupe
-            //if (params2 == 0)
-            //{
-            //    equipment = new Equipments { IdtNumber = params1, Description = "Une simple Description 2", Revision = "Revision B", SuiviAsm = "Ajout", GroupeId = null, ProjectId = params3 };
-            //}
-            //else
-            //{
-            //    equipment = new Equipments { IdtNumber = params1, Description = "Une simple Description 2", Revision = "Revision B", SuiviAsm = "Ajout", GroupeId = params2, ProjectId = params3 };
-            //}
+            //Le groupe d'une equipment est facultatif
+            if (equipmentData.Infos.GroupeId == 0)
+            {
+                equipment = new Equipments { IdtNumber = equipmentData.Infos.IdtNumber, Description = equipmentData.MotorizedEquipments.Description,
+                    Revision = equipmentData.MotorizedEquipments.Revision, SuiviAsm = equipmentData.MotorizedEquipments.Revision,
+                    GroupeId = null, ProjectId = equipmentData.Infos.ProjectId };
+            }
+            else
+            {
+                equipment = new Equipments { IdtNumber = equipmentData.Infos.IdtNumber, Description = equipmentData.MotorizedEquipments.Description,
+                    Revision = equipmentData.MotorizedEquipments.Revision, SuiviAsm = equipmentData.MotorizedEquipments.SuiviAsm, GroupeId = equipmentData.Infos.GroupeId, ProjectId = equipmentData.Infos.ProjectId };
+            }
 
-            //_context.Equipments.Add(equipment);
-            //_context.SaveChanges();
-            //var _equipmentId = equipment.Id;
+            _context.Equipments.Add(equipment);
+            _context.SaveChanges();
+            var _equipmentId = equipment.Id;
 
-            var _equipmentId = 0;
-            var area = new Areas { PIDReference = "Initial Reference 2", NumeroZone = "Initial Zone", File = " ", ZoneProcess = " ", Atelier = "Initial Atelier", SousAtelier = "Initial Sous Atelier", EquipmentId = _equipmentId };
-            var operatinInformation = new OperatingInformations { MoteurImerge = false, Atex = "2", Package = false, BackupGenset = false, Vfd = false, BackupInverter = false, Etat = "En cours", PackageTypique = "Initial Package Typique", EquipmentId = _equipmentId };
-            var electricalDistribution = new ElectricalDistributions { Transfo = "Initial Transfo 2", TgbtLocation = "Initial TgbtLocation", MccLocation = "Initial MccLocation", DepartType = 1, AlimentationElectrique = 1, Intensite = 1, CosPhi = 1, EquipmentId = _equipmentId };
-            var powerFeature = new PowerFeatures { NominalInstalledPower = 1, MechanicalPowerDemand = 1, MotorEfficiency = 1, MotorEfficiencyClass = "E1", InstalledAbsorbedPowerDp = 1, DutyAbsorbedPower = 1, EquipmentId = _equipmentId };
-            var cable = new Cables { TypeCablePuissance = "Initial Type Cable Puissance 2", SectionCable = 1, NombreCable = 1, TypeProtection = "Initial TypeProtection", TypeCableProtection = "Initial Type Cable Protection", TypeCableCommande = "Initial Type Cable commande", LongueurCable = 1, EquipmentId = _equipmentId };
-            var thermalDissipation = new ThermalDissipations { HeatDissipation = 2, HVAC = 1, EquipmentId = _equipmentId };
+            Areas area = equipmentData.Areas;
+            area.EquipmentId = _equipmentId;
 
-            //_context.Areas.Add(area);
-            //_context.OperaOperatingInformations.Add(operatinInformation);
-            //_context.ElectricalDistributions.Add(electricalDistribution);
-            //_context.PowerFeatures.Add(powerFeature);
-            //_context.Cables.Add(cable);
-            //_context.ThermalDissipations.Add(thermalDissipation);
+            OperatingInformations operatinInformation = equipmentData.OperatingInformations;
+            operatinInformation.EquipmentId = _equipmentId;
 
-            //_context.SaveChanges();
+            ElectricalDistributions electricalDistribution = equipmentData.ElectricalDistributions;
+            electricalDistribution.EquipmentId = _equipmentId;
 
+            PowerFeatures powerFeature = equipmentData.PowerFeatures;
+            powerFeature.EquipmentId = _equipmentId;
+
+            Cables cable = equipmentData.Cables;
+            cable.EquipmentId = _equipmentId;
+
+            ThermalDissipations thermalDissipation = equipmentData.ThermalDissipations;
+            thermalDissipation.EquipmentId = _equipmentId;
+
+            _context.Areas.Add(area);
+            _context.OperaOperatingInformations.Add(operatinInformation);
+            _context.ElectricalDistributions.Add(electricalDistribution);
+            _context.PowerFeatures.Add(powerFeature);
+            _context.Cables.Add(cable);
+            _context.ThermalDissipations.Add(thermalDissipation);
+
+            _context.SaveChanges();
             return StatusCode(201);
         }
 

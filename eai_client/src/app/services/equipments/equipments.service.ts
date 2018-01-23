@@ -26,7 +26,7 @@ export class EquipmentsService {
   //   return this._http.get(this.serverPath+'CreateSpecificEquipment/equipmentIdtNumber='+equipmentIdtNumber+'&groupeId='+equipmentGroupId+'&projectId='+equipmentProjectId);
   //  }
 
-  public insertEquipment(equipmentIdtNumber: string, equipmentGroupId: number,  equipmentProjectId: number, equipment: any) :Observable<any> {
+  public insertEquipment(equipment: any) :Observable<any> {
     console.log(equipment.ThermalDissipations);
     console.log(equipment.ThermalDissipations);
     console.log(equipment.ThermalDissipations);
@@ -64,8 +64,10 @@ export class EquipmentsService {
       },
       ThermalDissipations: {
         HeatDissipation: equipment.ThermalDissipations.HeatDissipation, HVAC: equipment.ThermalDissipations.HVAC
+      },
+      Infos: {
+        ProjectId: equipment.Infos.ProjectId, GroupeId: equipment.Infos.GroupeId, IdtNumber: equipment.Infos.IdtNumber
       }
-
     });
    }
 

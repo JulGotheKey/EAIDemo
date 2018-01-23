@@ -22,7 +22,6 @@ export class CommandProtectionComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, private _equipmentService: EquipmentsService) {
     this.sub = this.route.params.subscribe(params => {
-      console.log(params['idProject']);
       this.idProject = params['idProject'];
    });
   }
@@ -34,7 +33,6 @@ export class CommandProtectionComponent implements OnInit {
   dataTransform(dataRaw: any){
     this.formatData = [];
     this.cleanData = [];
-    console.log(dataRaw);
 
     // Order data table 
     dataRaw.forEach(element => {
@@ -57,7 +55,6 @@ export class CommandProtectionComponent implements OnInit {
       }
       this.isPush = true;
     }
-    console.log(this.cleanData);
   }
 
 

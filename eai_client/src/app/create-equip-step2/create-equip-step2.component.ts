@@ -37,7 +37,9 @@ export class CreateEquipStep2Component implements OnInit {
     .subscribe(
       (data) => this.dataGroups = data,
       (error) => console.log('error: '+ error),
-      ()=>console.log(this.dataGroups)
+      ()=>{
+
+      }
     );
     this.letSchemGroup();
   }
@@ -84,19 +86,18 @@ export class CreateEquipStep2Component implements OnInit {
       NombreCable: cableForm.nbrCable.value, TypeProtection: cableForm.typeProtection.value, TypeCableProtection: cableForm.typeCableProtection.value, 
       TypeCableCommande: cableForm.typeCableCommande.value, LongueurCable: cableForm.longueurCable.value};
 
-      this.cleanData["ThermalDissipations"] = {HeatDissipation: thermalDissForm.heatDissipation.value, HVAC: thermalDissForm.hvac.value}
-
+    this.cleanData["ThermalDissipations"] = {HeatDissipation: thermalDissForm.heatDissipation.value, HVAC: thermalDissForm.hvac.value}
+    
+    this.cleanData["Infos"] = { ProjectId: this.projectId, GroupeId: equipGroupId, IdtNumber: equipIdtNumber }
     var equipProjectId = this.projectId;
     
  
-    this._equipmentsService.insertEquipment(equipIdtNumber, equipGroupId, equipProjectId, this.cleanData)
+    this._equipmentsService.insertEquipment(this.cleanData)
     .subscribe(
       (data) => this.dataEquipment = data,
       (error) => console.log(error),
       ()=>{
         this.router.navigate(['/equipmentList/'+this.projectId]);
-        console.log(this.dataEquiment);
-        
       }
     );
   }
@@ -104,12 +105,10 @@ export class CreateEquipStep2Component implements OnInit {
   letSchemGroup(): void{
     this._groupsService.getSchemaGroup(this.projectId).then(
      res => {
-       console.log("API Success!");
-       console.log(res);
        this.dataFluidSchema = res;
      },
      msg =>{
-       console.log("API Down :(");
+
      }
    );
   }

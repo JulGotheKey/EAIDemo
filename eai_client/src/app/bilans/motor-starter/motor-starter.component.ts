@@ -22,7 +22,6 @@ export class MotorStarterComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, private _equipmentService: EquipmentsService) {
     this.sub = this.route.params.subscribe(params => {
-      console.log(params['idProject']);
       this.idProject = params['idProject'];
    });
   }
@@ -56,7 +55,6 @@ export class MotorStarterComponent implements OnInit {
       }
       this.isPush = true;
     }
-    console.log(this.cleanData);
   }
 
   getMotorStarter(projectId: number):void{

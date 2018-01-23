@@ -15,5 +15,6 @@ namespace EAIProper.RequestModel
         public MotorizedEquipments MotorizedEquipments { get; set; }
         public Cables Cables { get; set; }
         public ThermalDissipations ThermalDissipations { get; set; }
+        public Infos Infos { get; set; }
     }
 }
