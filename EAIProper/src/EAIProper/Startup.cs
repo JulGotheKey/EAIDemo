@@ -10,6 +10,7 @@ using Microsoft.Extensions.Logging;
 using EAIProper.DAL;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Cors.Infrastructure;
+using EAIProper.RequestModel;
 
 namespace EAIProper
 {
@@ -45,7 +46,15 @@ namespace EAIProper
             services.AddMvc();
             services.AddMvcCore();
             //var connectionString = "User ID=postgres;Password=uiop789;Host=localhost;Port=5432;Database=eaidev;Pooling=true";
-            var connectionString = "User ID=postgres;Password=postgres@2017;Host=10.152.10.65;Port=5432;Database=eaidev;Pooling=true";
+            //var connectionString = "User ID=postgres;Password=postgres@2017;Host=10.152.10.65;Port=5432;Database=eaidev;Pooling=true";
+
+            var connectionString = Configuration.GetSection("PostgesConnection:connectionString").Value;
+
+            services.Configure<Settings>(options =>
+            {
+                options.ConnectionString = Configuration.GetSection("PostgesConnection:connectionString").Value;
+            });
+
             services.AddDbContext<EAIContext>(
                 opts => opts.UseNpgsql(connectionString)
             );

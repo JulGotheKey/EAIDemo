@@ -64,7 +64,7 @@ namespace EAIProper.Controllers
             string dataObjectStr = dataObject.ToString();
             var equipmentData = JsonConvert.DeserializeObject<EquipmentDesc>(dataObjectStr);
 
-            //Le groupe d'une equipment est facultatif
+            //Le groupe d'un equipment est facultatif
             if (equipmentData.Infos.GroupeId == 0)
             {
                 equipment = new Equipments { IdtNumber = equipmentData.Infos.IdtNumber, Description = equipmentData.MotorizedEquipments.Description,
