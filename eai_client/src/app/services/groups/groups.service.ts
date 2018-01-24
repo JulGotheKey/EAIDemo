@@ -19,8 +19,8 @@ export class GroupsService {
 
   constructor(private _http: Http) {
     this.data = new Observable((observer)=> this.dataObserver = observer);
-    this.serverPath = 'http://localhost:54497/api/Groupes/';
-    //this.serverPath = 'http://frstm01aplu1:8086/api/Groupes/';
+    // this.serverPath = 'http://localhost:54497/api/Groupes/';
+    this.serverPath = 'http://frstm01aplu1:8086/api/Groupes/';
    }
 
   public getGroups(projectId: number) :Observable<any> {
