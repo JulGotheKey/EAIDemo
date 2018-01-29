@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { EquipmentsService } from '../../services/equipments/equipments.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-command-protection',
@@ -20,7 +20,7 @@ export class CommandProtectionComponent implements OnInit {
   dataGroups: any;
   groupSelectId: number;
 
-  constructor(private route: ActivatedRoute, private _equipmentService: EquipmentsService) {
+  constructor(private route: ActivatedRoute, private _equipmentService: EquipmentsService, private router: Router) {
     this.sub = this.route.params.subscribe(params => {
       this.idProject = params['idProject'];
    });
@@ -69,6 +69,8 @@ export class CommandProtectionComponent implements OnInit {
     )
   }
 
-  
+  goToEquipList():void {
+    this.router.navigateByUrl('/equipmentList/'+this.idProject);
+  }
 
 }

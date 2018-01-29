@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { EquipmentsService } from '../../services/equipments/equipments.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-wiring-power',
@@ -18,7 +18,7 @@ export class WiringPowerComponent implements OnInit {
   dataCompare = [];
   isPush: boolean = true;
 
-  constructor(private route: ActivatedRoute, private _equipmentService: EquipmentsService) {
+  constructor(private route: ActivatedRoute, private _equipmentService: EquipmentsService, private router: Router) {
     this.sub = this.route.params.subscribe(params => {
       this.idProject = params['idProject'];
    });
@@ -63,5 +63,9 @@ export class WiringPowerComponent implements OnInit {
         this.dataTransform(this.dataWiringPower)
       }
     )
+  }
+
+  goToEquipList(): void {
+    this.router.navigateByUrl('/equipmentList/'+this.idProject);
   }
 }

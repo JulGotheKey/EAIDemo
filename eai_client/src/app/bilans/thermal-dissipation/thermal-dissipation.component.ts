@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { EquipmentsService } from '../../services/equipments/equipments.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { GroupsService } from '../../services/groups/groups.service';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 
@@ -24,7 +24,7 @@ export class ThermalDissipationComponent implements OnInit {
   selectedGroup = {id: '', projectId: 0, name: '', groupSupId: 0};
   groupSelectId: number;
 
-  constructor(private fb: FormBuilder, private route: ActivatedRoute, private _equipmentService: EquipmentsService, private _groupsService: GroupsService) {
+  constructor(private fb: FormBuilder, private route: ActivatedRoute, private _equipmentService: EquipmentsService, private _groupsService: GroupsService, private router: Router) {
     this.sub = this.route.params.subscribe(params => {
       console.log(params['idProject']);
       this.idProject = params['idProject'];
@@ -77,5 +77,8 @@ export class ThermalDissipationComponent implements OnInit {
         this.dataTransform(this.dataThermalDissipation);
       }
     )
+  }
+  goToEquipList(): void {
+    this.router.navigateByUrl('/equipmentList/'+this.idProject)
   }
 }
