@@ -1,22 +1,28 @@
-import { Injectable } from '@angular/core';
+import { Injectable, isDevMode, OnInit } from '@angular/core';
 import { Http } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { Observer } from 'rxjs/Observer';
 import { Subject } from 'rxjs/Subject';
+import { SharedService } from '../../services/shared/shared.service';
 import 'rxjs/Rx';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';  // debug
 import 'rxjs/add/operator/catch';
 
 @Injectable()
-export class ProjectsService {
+export class ProjectsService implements OnInit {
+  ngOnInit(): void {
+    
+  }
 
   data: Observable<any>;
-  dataObserver: Observer<any>;
+  urlData: any;
+  dataObserver: Observer<any>; 
   serverPath: string;
 
-  constructor(private _http: Http) {
+  constructor(private _http: Http, private _sharedServide: SharedService) {
     this.data = new Observable((observer)=> this.dataObserver = observer);
+
     // this.serverPath = 'http://localhost:54497/api/Projects/';
     this.serverPath = 'http://frstm01aplu1:8086/api/Projects/';
 
@@ -27,11 +33,14 @@ export class ProjectsService {
    }
 
    public getProjects() :Observable<any> {
+    console.log(this.serverPath);
+    console.log(this.serverPath);
+    console.log(this.serverPath);
+     
      return this._http.get(this.serverPath + 'GetAllProjects').map((data) => data.json());
    }
 
    public getProject(projectId: number) :Observable<any> {
      return this._http.get(this.serverPath + 'GetProject/projectId=' + projectId).map((data) => data.json());
    }
-
 }

@@ -40,8 +40,7 @@ export class MotorStarterComponent implements OnInit {
         this.formatData.push({'SwitchBoard': element.Groupe.Name, 'MotorStarterType': element.ElectricalDistributions.DepartType, 'Puissance': element.PowerFeatures.NominalInstalledPower, Number: 1});
       }
     });
-
-    // this.formatData.push({'SwitchBoard': 'SuperGroupe', 'MotorStarterType': 2, 'Puissance': 1, Number: 1});
+    
 
     for (var i = 0; i < this.formatData.length; i++) {
       for (var y = 0; y < this.cleanData.length; y++) {

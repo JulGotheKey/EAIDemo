@@ -13,6 +13,7 @@ export class AppComponent implements OnDestroy {
   private _opened: boolean = false;
   message: any;
   subscription: Subscription;
+  dataTest: any;
 
   constructor(private messageService: SharedService) {
     // subscribe to home component messages
@@ -20,7 +21,19 @@ export class AppComponent implements OnDestroy {
     //    console.log(message)
        
     // });
+    // this.getUrlString();
   }
+
+  // getUrlString(): void {
+  //   this.messageService.getConfiguration()
+  //   .subscribe(
+  //     (data)=> this.dataTest = data,
+  //     (error) => console.log('error: '+error),
+  //     ()=>{
+  //       console.log(this.dataTest);
+  //     }
+  //   )
+  // }
 
   ngOnDestroy() {
     // unsubscribe to ensure no memory leaks

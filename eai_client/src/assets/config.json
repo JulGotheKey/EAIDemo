@@ -1,0 +1,6 @@
+
+{
+    "apiPath": "http://localhost:54497/api/",
+    "local": "http://localhost:54497/api/",
+    "uat": "http://frstm01aplu1:8086/api/"
+}
