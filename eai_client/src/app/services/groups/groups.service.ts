@@ -20,7 +20,7 @@ export class GroupsService {
 
   constructor(private _http: Http) {
     this.data = new Observable((observer)=> this.dataObserver = observer);
-    this.serverPath = SharedService.URLPATHSERVICE;
+    this.serverPath = SharedService.URLPATHSERVICE+/Groupes/;
    }
 
   public getGroups(projectId: number) :Observable<any> {

@@ -22,7 +22,7 @@ export class ProjectsService implements OnInit {
   
   constructor(private _http: Http, private _sharedServide: SharedService) {
     this.data = new Observable((observer)=> this.dataObserver = observer);
-    this.serverPath = SharedService.URLPATHSERVICE;
+    this.serverPath = SharedService.URLPATHSERVICE+'/Projects/';
 
    }
 
@@ -31,10 +31,6 @@ export class ProjectsService implements OnInit {
    }
 
    public getProjects() :Observable<any> {
-    console.log(this.serverPath);
-    console.log(this.serverPath);
-    console.log(this.serverPath);
-     
      return this._http.get(this.serverPath + 'GetAllProjects').map((data) => data.json());
    }
 

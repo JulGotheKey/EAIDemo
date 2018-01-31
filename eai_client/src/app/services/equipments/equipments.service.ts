@@ -18,7 +18,13 @@ export class EquipmentsService {
 
   constructor(private _http: Http) {
     this.data = new Observable((observer)=> this.dataObserver = observer);
-    this.serverPath = SharedService.URLPATHSERVICE;
+    this.serverPath = 'http://localhost:54497/api/Equipments/';
+   
+
+    //http://localhost:54497/api/Equipments/
+    
+    // this.serverPath = 'http://frstm01aplu1:8086/api/Equipments/';
+    this.serverPath = SharedService.URLPATHSERVICE+'/Equipments/';
    }
 
    //TO POST Migration !!!
@@ -27,10 +33,6 @@ export class EquipmentsService {
   //  }
 
   public insertEquipment(equipment: any) :Observable<any> {
-    console.log(equipment.ThermalDissipations);
-    console.log(equipment.ThermalDissipations);
-    console.log(equipment.ThermalDissipations);
-    console.log(equipment.ThermalDissipations);
     
     return this._http.post(this.serverPath+'CreateSpecificEquipment', {
       OperatingInformations: {

@@ -12,8 +12,8 @@ export class SharedService {
 
   private subject = new Subject<any>();
   //'http://frstm01aplu1:8086/api/Projects/'
-  //'http://localhost:54497/api/Projects/'
-  public static URLPATHSERVICE = 'http://localhost:54497/api/Projects/';
+  //http://localhost:54497/api/Projects/'
+  public static URLPATHSERVICE = 'http://localhost:54497/api/';
 
   sendMessage(message: number) {
     this.subject.next({ text: message });
