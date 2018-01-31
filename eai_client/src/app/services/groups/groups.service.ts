@@ -3,6 +3,7 @@ import { Http } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { Observer } from 'rxjs/Observer';
 import { Subject } from 'rxjs/Subject';
+import { SharedService } from '../shared/shared.service';
 import 'rxjs/Rx';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';  // debug
@@ -19,8 +20,7 @@ export class GroupsService {
 
   constructor(private _http: Http) {
     this.data = new Observable((observer)=> this.dataObserver = observer);
-    // this.serverPath = 'http://localhost:54497/api/Groupes/';
-    this.serverPath = 'http://frstm01aplu1:8086/api/Groupes/';
+    this.serverPath = SharedService.URLPATHSERVICE;
    }
 
   public getGroups(projectId: number) :Observable<any> {

@@ -3,6 +3,7 @@ import { Http } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { Observer } from 'rxjs/Observer';
 import { Subject } from 'rxjs/Subject';
+import { SharedService } from '../shared/shared.service';
 import 'rxjs/Rx';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';  // debug
@@ -17,8 +18,7 @@ export class FormsService {
 
   constructor(private _http: Http) {
     this.data = new Observable((observer) => this.dataObserver = observer);
-    // this.serverpath = 'http://localhost:54497/api/';
-    this.serverpath = 'http://frstm01aplu1:8086/api/';
+    this.serverpath = SharedService.URLPATHSERVICE;
    }
   
   getAllProjects(): Observable<any> {

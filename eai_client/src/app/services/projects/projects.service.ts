@@ -19,12 +19,10 @@ export class ProjectsService implements OnInit {
   urlData: any;
   dataObserver: Observer<any>; 
   serverPath: string;
-
+  
   constructor(private _http: Http, private _sharedServide: SharedService) {
     this.data = new Observable((observer)=> this.dataObserver = observer);
-
-    // this.serverPath = 'http://localhost:54497/api/Projects/';
-    this.serverPath = 'http://frstm01aplu1:8086/api/Projects/';
+    this.serverPath = SharedService.URLPATHSERVICE;
 
    }
 

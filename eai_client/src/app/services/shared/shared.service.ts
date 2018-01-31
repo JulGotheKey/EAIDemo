@@ -11,7 +11,9 @@ export class SharedService {
   constructor(private _http: Http) { }
 
   private subject = new Subject<any>();
-
+  //'http://frstm01aplu1:8086/api/Projects/'
+  //'http://localhost:54497/api/Projects/'
+  public static URLPATHSERVICE = 'http://localhost:54497/api/Projects/';
 
   sendMessage(message: number) {
     this.subject.next({ text: message });
